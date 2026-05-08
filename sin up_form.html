@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Sign Up</title>
+
+    <style>
+        /* ===== GLOBAL ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a, #1e3a8a);
+        }
+
+        /* ===== CARD ===== */
+        .container {
+            width: 420px;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        /* TITLE */
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        /* INPUTS */
+        .input-box {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 10px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        input::placeholder {
+            color: #ddd;
+        }
+
+        /* ERROR */
+        .error {
+            font-size: 12px;
+            color: #ffb4b4;
+            margin-top: 3px;
+        }
+
+        /* DOB */
+        .dob {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* BUTTONS */
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .submit {
+            background: linear-gradient(135deg, #06973b, #16a34a);
+            color: white;
+        }
+
+        .cancel {
+            background: rgba(17, 151, 46, 0.952);
+            color: rgb(227, 233, 240);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Create Account</h1>
+
+        <form id="signupForm">
+
+            <div class="input-box">
+                <label>Email / Phone</label>
+                <input type="text" id="email" placeholder="Enter email or phone">
+                <div class="error" id="emailError"></div>
+            </div>
+
+            <div class="input-box">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+                <div class="error" id="passwordError"></div>
+            </div>
+
+            <div class="input-box">
+                <label>Full Name</label>
+                <input type="text" id="fullname" placeholder="Enter full name">
+                <div class="error" id="fullnameError"></div>
+            </div>
+
+            <div class="input-box">
+                <label>Gender</label>
+                <select id="gender">
+                    <option value="">Select gender</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+                <div class="error" id="genderError"></div>
+            </div>
+
+            <div class="input-box">
+                <label>Date of Birth</label>
+                <div class="dob">
+                    <select>
+                        <option>Year</option>
+                        <option>2000</option>
+                        <option>2001</option>
+                        <option>2002</option>
+                        <option>2003</option>
+                        <option>2004</option>
+                        <option>2005</option>
+                    </select>
+
+                    <select>
+                        <option>Month</option>
+                        <option>Jan</option>
+                        <option>Feb</option>
+                        <option>Mar</option>
+                        <option>Apr</option>
+                        <option>May</option>
+                    </select>
+
+                    <select>
+                        <option>Day</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button type="submit" class="submit"><a href="submit_form.html">Sign Up</a></button>
+                <button type="reset" class="cancel">Cancel</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("signupForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+            let username = document.getElementById("username").value.trim();
+            let fullname = document.getElementById("fullname").value.trim();
+            let gender = document.getElementById("gender").value;
+
+            let valid = true;
+
+            // reset errors
+            document.querySelectorAll(".error").forEach(el => el.innerHTML = "");
+
+            if (email === "") {
+                document.getElementById("emailError").innerHTML = "Required";
+                valid = false;
+            }
+
+            if (password.length < 6) {
+                document.getElementById("passwordError").innerHTML = "Min 6 characters";
+                valid = false;
+            }
+
+            if (username === "") {
+                document.getElementById("usernameError").innerHTML = "Required";
+                valid = false;
+            }
+
+            if (fullname === "") {
+                document.getElementById("fullnameError").innerHTML = "Required";
+                valid = false;
+            }
+
+            if (gender === "") {
+                document.getElementById("genderError").innerHTML = "Select gender";
+                valid = false;
+            }
+
+            if (valid) {
+                alert("Account created successfully!");
+                window.location.href = "home.html";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
