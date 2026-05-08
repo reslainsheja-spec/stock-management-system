@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Management System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            padding: 20px;
+        }
+
+        /* TITLE */
+        .main-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-decoration: underline;
+        }
+
+        /* MAIN CONTAINER */
+        .main-container {
+            width: 95%;
+            max-width: 1100px;
+            margin: auto;
+            background: #4472c4;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .logo-box img {
+            width: 120px;
+            border-radius: 8px;
+            background: white;
+            padding: 3px;
+        }
+
+        /* SEARCH */
+        .search-box input {
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            width: 220px;
+        }
+
+        /* NAV */
+        nav ul {
+            display: flex;
+            justify-content: space-around;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        nav ul li a {
+            background: white;
+            padding: 8px 18px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #92d050;
+        }
+
+        /* BANNER */
+        .banner {
+            background: white;
+            text-align: center;
+            padding: 10px;
+            margin: 15px 0;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        /* CONTENT */
+        .content {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* IMAGE */
+        .image-section,
+        .dashboard-section {
+            flex: 1;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .image-section img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* DASHBOARD */
+        .dashboard-section h3 {
+            margin-bottom: 10px;
+            text-decoration: underline;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th,
+        td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #e0e0e0;
+        }
+
+        .status-available {
+            color: green;
+            font-weight: bold;
+        }
+
+        .status-low {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 15px;
+            text-align: center;
+            background: #dbe5f1;
+            padding: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 class="main-title">COBANGA STOCK MANAGEMENT SYSTEM</h1>
+
+    <div class="main-container">
+
+        <!-- HEADER -->
+        <header>
+            <div class="logo-box">
+                <img src="c:\Users\COBANGA\Downloads\ChatGPT Image Apr 29, 2026, 06_15_06 AM.png" alt="Logo">
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Search product...">
+            </div>
+        </header>
+
+        <!-- NAV -->
+        <nav>
+            <ul>
+                <li><a href="index_form.html">Home</a></li>
+                <li><a href="product_form.html">Product</a></li>
+                <li><a href="stock in_form.html">Stock In</a></li>
+                <li><a href="stockout_form.html">Stock Out</a></li>
+                <li><a href="about us_form.html">About</a></li>
+                <li><a href="logout_form.html">Logout</a></li>
+            </ul>
+        </nav>
+
+        <!-- BANNER -->
+        <div class="banner">
+            STOCK MANAGEMENT SYSTEM DASHBOARD
+        </div>
+
+        <!-- CONTENT -->
+        <div class="content">
+
+            <!-- IMAGE -->
+            <div class="image-section">
+                <img src="c:\Users\COBANGA\Downloads\Rice exporters rail against storage minimum.jpg" alt="Warehouse">
+            </div>
+
+            <!-- DASHBOARD -->
+            <div class="dashboard-section">
+                <h3>Dashboard</h3>
+
+                <p>Total Products: <b>120</b></p>
+                <p>Available: <b>95</b></p>
+                <p>Low Stock: <b>15</b></p>
+                <p>Out of Stock: <b>10</b></p>
+
+                <table id="productTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>Sugar</td>
+                            <td>Food</td>
+                            <td>50</td>
+                            <td class="status-available">Available</td>
+                        </tr>
+
+                        <tr>
+                            <td>Rice</td>
+                            <td>Food</td>
+                            <td>5</td>
+                            <td class="status-low">Low Stock</td>
+                        </tr>
+
+                        <tr>
+                            <td>Soap</td>
+                            <td>Cleaning</td>
+                            <td>0</td>
+                            <td class="status-low">Out of Stock</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            © COBANGA Stock Management System 2026
+        </footer>
+
+    </div>
+
+    <script>
+        // ===== SEARCH FUNCTION =====
+        document.getElementById("searchInput").addEventListener("keyup", function () {
+
+            let filter = this.value.toLowerCase();
+            let rows = document.querySelectorAll("#productTable tbody tr");
+
+            rows.forEach(row => {
+                let text = row.textContent.toLowerCase();
+
+                if (text.includes(filter)) {
+                    row.style.display = "";
+                } else {
+                    row.style.display = "none";
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
